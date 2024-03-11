@@ -1,0 +1,24 @@
+@startuml
+set separator none
+title Identity Service - Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+System(3rdPartyApplication, "3rd-Party Application", $descr="A system to use Barracks as a identity provider", $tags="", $link="")
+
+System_Boundary("IdentityService_boundary", "Identity Service", $tags="") {
+  Container(IdentityService.LoginWebApplication, "Login Web Application", $techn="NextJS", $descr="Login Web Application to athenticate", $tags="", $link="")
+  Container(IdentityService.AuthenticationAPIProvider, "Authentication API Provider", $techn="NestJS", $descr="API server", $tags="", $link="")
+  ContainerDb(IdentityService.Database, "Database", $techn="MySQL", $descr="Stores identification related data to athenticate", $tags="", $link="")
+}
+
+Rel(IdentityService.LoginWebApplication, IdentityService.AuthenticationAPIProvider, "", $techn="", $tags="", $link="")
+Rel(IdentityService.AuthenticationAPIProvider, IdentityService.Database, "", $techn="", $tags="", $link="")
+Rel(3rdPartyApplication, IdentityService.LoginWebApplication, "", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

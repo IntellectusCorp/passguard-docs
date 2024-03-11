@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="has-background-light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search results | Barracks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+    <link href="../../style.css" rel="stylesheet">
+    <link href="./../style-branding.css" rel="stylesheet">
+    <script type="text/javascript" src="../../svg-modal.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript" src="../../header.js"></script>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand has-site-branding"><a href="../" class="navbar-item"><span class="has-text-weight-semibold has-site-branding">Barracks</span></a></div>
+      <div class="navbar-menu has-site-branding">
+        <div class="navbar-end">
+          <div class="navbar-item"><input class="input is-small is-rounded has-site-branding" id="search" type="search" size="30" maxlength="50" placeholder="Search..." onkeyup="redirect(event, value, './')"></div>
+          <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link has-site-branding">master</a>
+            <div class="navbar-dropdown is-right"><a href="../../master/" class="navbar-item">master</a>
+              <hr class="navbar-divider">
+              <div class="navbar-item has-text-grey-light"><span>v</span><span>0.0.0</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="site-layout" id="site">
+      <aside class="menu p-3">
+        <p class="menu-label">General</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../" class="">Home</a><a href="../software-systems/" class="">Software Systems</a></li>
+        </ul>
+        <p class="menu-label">Software systems</p>
+        <ul class="menu-list has-site-branding">
+          <li><a href="../3rd-party-application/" class="">3rd-Party Application</a><a href="../identity-service/" class="">Identity Service</a></li>
+        </ul>
+      </aside>
+      <div class="container is-fluid has-background-white">
+        <div class="content p-3">
+          <h2>Search results</h2>
+          <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
+          <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr-languages@1.14.0/min/lunr.stemmer.support.min.js"></script>
+          <script type="text/javascript">const documents = [{"href":"../","type":"Home","title":"자율주행 빅데이터 플랫폼 아키텍처","text":"자율주행 빅데이터 플랫폼 아키텍처 제공하고 있는 문서들 System Landscape Diagram 본 웹 사이트는 자율주행 빅데이터 플랫폼의 아키텍처에 관한 문서들을 제공하고 있습니다. 문서들은 기본적으로는 [C4 Model](https://c4model.com/) 에 기반한 산출물이며, 추가적으로는 특정 주제에 최적화된 형태의 문서들도 포함하고 있습니다. System Landscape Diagram 은 System Context View 와 동일한 수준에서 시스템이 외부의 요소들과 어떤 관계를 갖는지에 대한 전반적인 뷰를 나타냅니다.\n![System Landscape Diagram](embed:SystemLandscape)"},{"href":"../3rd-party-application/","type":"Software System Info","title":"3rd-Party Application | Info","text":"3rdpartyapplication"},{"href":"../3rd-party-application/context/","type":"Context views","title":"3rd-Party Application | Context views","text":"3rd-Party Application A system to use Barracks as a identity provider"},{"href":"../3rd-party-application/dependencies/","type":"Dependencies","title":"3rd-Party Application | Dependencies","text":"Identity Service Login Web Application"},{"href":"../identity-service/","type":"Software System Info","title":"Identity Service | Info","text":"identityservice"},{"href":"../identity-service/context/","type":"Context views","title":"Identity Service | Context views","text":"Identity Service Identity Solution Provider."},{"href":"../identity-service/container/","type":"Container views","title":"Identity Service | Container views","text":"Authentication API Provider API server NestJS Database Stores identification related data to athenticate MySQL Login Web Application Login Web Application to athenticate NextJS"},{"href":"../identity-service/component/","type":"Component views","title":"Identity Service | Component views","text":"Identify Token Service manage authentication token NextJS Service"},{"href":"../identity-service/dependencies/","type":"Dependencies","title":"Identity Service | Dependencies","text":"3rd-Party Application"}];const idx = lunr(function () {
+                        this.ref('href')
+                        this.field('text')
+
+                        documents.forEach(function (doc) {
+                          this.add(doc)
+                        }, this)
+                      });
+                    </script>
+          <script type="text/javascript" src="../../search.js"></script>
+          <div id="search-results"></div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="../../reformat-mermaid.js"></script>
+    <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.esm.min.mjs';</script>
+  </body>
+</html>

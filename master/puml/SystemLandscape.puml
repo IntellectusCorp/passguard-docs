@@ -1,0 +1,24 @@
+@startuml
+set separator none
+title System Landscape
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+
+AddBoundaryTag("Barracks", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
+Boundary(group_1, "Barracks", $tags="Barracks") {
+  System(IdentityService, "Identity Service", $descr="Identity Solution Provider.", $tags="", $link="")
+}
+
+AddBoundaryTag("Users", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
+Boundary(group_2, "Users", $tags="Users") {
+  Person(ExtDeveloper, "Ext.Developer", $descr="A user of this system, usually who are going to implement some software system.", $tags="", $link="")
+}
+
+
+Rel(ExtDeveloper, IdentityService, "use authtication capability", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml
