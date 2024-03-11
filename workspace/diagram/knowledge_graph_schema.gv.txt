@@ -1,0 +1,22 @@
+graph SCHEMA {
+	fontname="Helvetica,Arial,sans-serif"
+	node [fontname="Helvetica,Arial,sans-serif"]
+	edge [fontname="Helvetica,Arial,sans-serif"]
+	layout=neato
+	node [shape=circle]; 
+	    "entity:pedestrain" "entity:person" "entity:보행자"
+	node [shape=ellipse]; "schema:DataValue" "schema:DataSet"
+	node [shape=box]; "\"1234567890\"";
+
+	"entity:pedestrain" -- "entity:person"
+	"entity:pedestrain" -- "entity:보행자" [label="related", len=2.50];
+	"entity:pedestrain" -- "schema:DataValue" [label="isElementOf", len=1.50];
+	"schema:DataValue" -- "schema:DataSet" [label="isElementOf", len=2.00];
+	"schema:DataValue" -- "description" [label="schema:column", len=2.00];
+    "schema:DataSet" -- "\"1234567890\"" [label="schema:id",len=0.80];
+    "schema:DataSet" -- "nuScene" [label="schema:name",len=0.80];
+
+    overlap=false
+	label = "\n\nEntity Relation Diagram\ndrawn by NEATO";
+	fontsize=20;
+}
