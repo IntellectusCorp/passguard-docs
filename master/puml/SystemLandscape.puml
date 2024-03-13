@@ -7,8 +7,8 @@ top to bottom direction
 !include <C4/C4>
 !include <C4/C4_Context>
 
-AddBoundaryTag("Barracks", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
-Boundary(group_1, "Barracks", $tags="Barracks") {
+AddBoundaryTag("PassGuard", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
+Boundary(group_1, "PassGuard", $tags="PassGuard") {
   System(IdentityService, "Identity Service", $descr="Identity Solution Provider.", $tags="", $link="")
 }
 

@@ -9,11 +9,11 @@ top to bottom direction
 
 AddBoundaryTag("3rd Party System", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_1, "3rd Party System", $tags="3rd Party System") {
-  System(3rdPartyApplication, "3rd-Party Application", $descr="A system to use Barracks as a identity provider", $tags="", $link="")
+  System(3rdPartyApplication, "3rd-Party Application", $descr="A system to use PassGuard as a identity provider", $tags="", $link="")
 }
 
-AddBoundaryTag("Barracks", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
-Boundary(group_2, "Barracks", $tags="Barracks") {
+AddBoundaryTag("PassGuard", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
+Boundary(group_2, "PassGuard", $tags="PassGuard") {
   System(IdentityService, "Identity Service", $descr="Identity Solution Provider.", $tags="", $link="")
 }
 

@@ -8,7 +8,7 @@ top to bottom direction
 !include <C4/C4_Context>
 !include <C4/C4_Container>
 
-System(3rdPartyApplication, "3rd-Party Application", $descr="A system to use Barracks as a identity provider", $tags="", $link="")
+System(3rdPartyApplication, "3rd-Party Application", $descr="A system to use PassGuard as a identity provider", $tags="", $link="")
 
 System_Boundary("IdentityService_boundary", "Identity Service", $tags="") {
   Container(IdentityService.LoginWebApplication, "Login Web Application", $techn="NextJS", $descr="Login Web Application to athenticate", $tags="", $link="")
