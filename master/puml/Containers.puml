@@ -1,6 +1,6 @@
 @startuml
 set separator none
-title Identity Service - Containers
+title Identity Solution - Containers
 
 top to bottom direction
 
@@ -10,16 +10,17 @@ top to bottom direction
 
 System(3rdPartyApplication, "3rd-Party Application", $descr="A system to use PassGuard as a identity provider", $tags="", $link="")
 
-System_Boundary("IdentityService_boundary", "Identity Service", $tags="") {
-  Container(IdentityService.LoginWebApplication, "Login Web Application", $techn="NextJS", $descr="Authenticator(Client Device)", $tags="", $link="")
-  Container(IdentityService.PassGuardServerApplication, "PassGuard Server Application", $techn="NestJS", $descr="API server", $tags="", $link="")
-  ContainerDb(IdentityService.Database, "Database", $techn="MySQL", $descr="Stores identification related data to athenticate", $tags="", $link="")
+System_Boundary("IdentitySolution_boundary", "Identity Solution", $tags="") {
+  Container(IdentitySolution.LoginWebApplication, "Login Web Application", $techn="NextJS", $descr="Authenticator(Client Device)", $tags="", $link="")
+  Container(IdentitySolution.PassGuardServerApplication, "PassGuard Server Application", $techn="NestJS", $descr="API server", $tags="", $link="")
+  ContainerDb(IdentitySolution.Database, "Database", $techn="MySQL", $descr="Stores identification related data to athenticate", $tags="", $link="")
 }
 
-Rel(3rdPartyApplication, IdentityService.LoginWebApplication, "", $techn="", $tags="", $link="")
-Rel(IdentityService.LoginWebApplication, IdentityService.PassGuardServerApplication, "", $techn="", $tags="", $link="")
-Rel(IdentityService.LoginWebApplication, IdentityService.LoginWebApplication, "", $techn="", $tags="", $link="")
-Rel(IdentityService.PassGuardServerApplication, IdentityService.Database, "", $techn="", $tags="", $link="")
+Rel(IdentitySolution.PassGuardServerApplication, IdentitySolution.Database, "", $techn="", $tags="", $link="")
+Rel(3rdPartyApplication, IdentitySolution.LoginWebApplication, "", $techn="", $tags="", $link="")
+Rel(IdentitySolution.LoginWebApplication, IdentitySolution.PassGuardServerApplication, "", $techn="", $tags="", $link="")
+Rel(IdentitySolution.LoginWebApplication, IdentitySolution.LoginWebApplication, "", $techn="", $tags="", $link="")
+Rel(3rdPartyApplication, IdentitySolution.PassGuardServerApplication, "", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

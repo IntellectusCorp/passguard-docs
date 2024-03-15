@@ -1,6 +1,6 @@
 @startuml
 set separator none
-title Identity Service - System Context
+title Identity Solution - System Context
 
 top to bottom direction
 
@@ -14,11 +14,11 @@ Boundary(group_1, "3rd Party System", $tags="3rd Party System") {
 
 AddBoundaryTag("PassGuard", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_2, "PassGuard", $tags="PassGuard") {
-  System(IdentityService, "Identity Service", $descr="Identity Solution Provider.", $tags="", $link="")
+  System(IdentitySolution, "Identity Solution", $descr="Identity Solution Provider.", $tags="", $link="")
 }
 
 
-Rel(3rdPartyApplication, IdentityService, "", $techn="", $tags="", $link="")
+Rel(3rdPartyApplication, IdentitySolution, "", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

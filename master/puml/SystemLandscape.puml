@@ -9,7 +9,7 @@ top to bottom direction
 
 AddBoundaryTag("PassGuard", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_1, "PassGuard", $tags="PassGuard") {
-  System(IdentityService, "Identity Service", $descr="Identity Solution Provider.", $tags="", $link="")
+  System(IdentitySolution, "Identity Solution", $descr="Identity Solution Provider.", $tags="", $link="")
 }
 
 AddBoundaryTag("Users", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
@@ -18,7 +18,7 @@ Boundary(group_2, "Users", $tags="Users") {
 }
 
 
-Rel(ExtDeveloper, IdentityService, "use authtication capability", $techn="", $tags="", $link="")
+Rel(ExtDeveloper, IdentitySolution, "use authtication capability", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml
