@@ -28,22 +28,30 @@ workspace "PassGuard"  {
         
         group "PassGuard" {
 
-            identityService = softwaresystem "Identity Service" {
+            identitySolution = softwaresystem "Identity Solution" {
                 description "Identity Solution Provider."
                 
                 loginWebApplication = container "Login Web Application" {
-                    description "Login Web Application to athenticate"
+                    description "Authenticator(Client Device)"
                     technology "NextJS"
                     tags "Web Browser"
                 }
-                
-                authenticationAPIProvider = container "Authentication API Provider" {
+
+                passguardServerApplication = container "PassGuard Server Application" {
                     description "API server"
                     technology "NestJS"
-                    
-                    idTokenService = component "Identify Token Service" {
-                        description "manage authentication token"
-                        technology "NextJS Service"
+
+                    credentialModule = component "credentialModule" {
+                        description "credential module"
+                        technology "NextJS Module"
+                    }
+                    serviceModule = component "serviceModule" {
+                        description "service module"
+                        technology "NextJS Module"
+                    }
+                    userModule = component "userModule" {
+                        description "user module"
+                        technology "NextJS Module"
                     }
                 }
                 
@@ -51,19 +59,40 @@ workspace "PassGuard"  {
                     description "Stores identification related data to athenticate"    
                     technology "MySQL"
                     tags "Database"
+
+                    userDataModel = component "userDataModel" {
+                        description "User Data Model"
+                    } 
+
+                    serviceDataModel = component "serviceDataModel" {
+                        description "Service Data Model"
+                    }
+
+                    credentialDataModel = component "credentialDataModel" {
+                        description "Credential Data Model"
+                    }
                 }
             }
         }
         
         # relationships between people and software systems
-        externelDeveloper -> identityService "use authtication capability"
+        externelDeveloper -> identitySolution "use authtication capability"
 
         # relationships to/from containers
+        passguardServerApplication -> database
         3rdPartyApplication -> loginWebApplication
-        loginWebApplication -> authenticationAPIProvider
+        loginWebApplication -> passguardServerApplication
+        loginWebApplication -> loginWebApplication
+
+        3rdPartyApplication -> serviceModule
+        3rdPartyApplication -> credentialModule
 
         # relationships to/from components
-        idTokenService -> database
+        credentialModule -> serviceModule
+        serviceModule -> userModule
+
+        userModule -> userDataModel
+        credentialModule -> credentialDataModel
 
     }
 
@@ -74,12 +103,11 @@ workspace "PassGuard"  {
             autoLayout
         }
 
-        systemcontext identityService "SystemContext" {
+        systemcontext identitySolution "SystemContext" {
             include *
             exclude externelDeveloper
             animation {
-                identityService
-                
+                identitySolution
             }
             autoLayout
             description "The system context diagram for the Internet Banking System."
@@ -88,10 +116,26 @@ workspace "PassGuard"  {
             }
         }
 
-        container identityService "Containers" {
+        container identitySolution "Containers" {
             include *
             autoLayout
             description "The container diagram for the Internet Banking System."
+        }
+
+        component passguardServerApplication "ServerComponentVeiw" {
+            description ""
+            include *
+            autoLayout
+        }
+
+        dynamic passguardServerApplication "DynamicVeiwCredentialRegistration" {
+            description "Process to credential registration."
+            autoLayout lr
+
+            3rdPartyApplication -> credentialModule "request with {service_id, user_id, domain}"
+            credentialModule -> serviceModule "request to validate"
+            serviceModule -> userModule "proceed user creation with duplication checking "
+            credentialModule -> 3rdPartyApplication "response"
         }
 
 
