@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
     <link href="../../style.css" rel="stylesheet">
     <link href="./../style-branding.css" rel="stylesheet">
+    <script type="text/javascript" src="../../modal.js"></script>
     <script type="text/javascript" src="../../svg-modal.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
   </head>
@@ -40,7 +41,7 @@
       <div class="container is-fluid has-background-white">
         <div class="content p-3">
           <div><h2>주요 서비스 프로세스</h2>
-<h3>자격증명 등록키 요청</h3>
+<h3>자격증명 등록 프로세스</h3>
 <p>
  <div>
   <figure style="width: min(100%, 1251px);">
@@ -187,7 +188,7 @@
     </svg>
    </div>
    <figcaption>
-    <a onclick="openModal('DynamicVeiwCredentialRegistration-modal', 'DynamicVeiwCredentialRegistration-svg')">자격증명 등록키 요청 Dynamic View</a>
+    <a onclick="openSvgModal('DynamicVeiwCredentialRegistration-modal', 'DynamicVeiwCredentialRegistration-svg')">자격증명 등록키 요청 Dynamic View</a>
    </figcaption>
   </figure>
   <div class="modal" id="DynamicVeiwCredentialRegistration-modal">
@@ -337,17 +338,26 @@
       </svg>
      </div>
      <div class="has-text-centered">
-      [<a href="../svg/DynamicVeiwCredentialRegistration.svg" target="_blank">svg</a>|<a href="../png/DynamicVeiwCredentialRegistration.png" target="_blank">png</a>|<a href="../puml/DynamicVeiwCredentialRegistration.puml" target="_blank">puml</a>]
+      자격증명 등록키 요청 Dynamic View [<a href="../svg/DynamicVeiwCredentialRegistration.svg" target="_blank">svg</a>|<a href="../png/DynamicVeiwCredentialRegistration.png" target="_blank">png</a>|<a href="../puml/DynamicVeiwCredentialRegistration.puml" target="_blank">puml</a>]
      </div>
     </div>
    </div><button class="modal-close is-large" aria-label="close" onclick="closeModal('DynamicVeiwCredentialRegistration-modal')"></button>
   </div>
  </div></p>
-<p><img src="../credential_registration.png" alt="자격증명 등록키 요청 Sequence Diagram"></p></div>
+<p><img src="../credential-registration-process.png" alt="자격증명 등록 프로세스"></p>
+<p><img src="../credential-registration.png" alt="자격증명 등록"></p>
+<p><img src="../credential-issue-key.png" alt="자격증명 등록 키 발급"></p>
+<h3>자격증명 검증 프로세스</h3>
+<p><img src="../credential-validation-process.png" alt="자격증명  검증 프로세스"></p>
+<p><img src="../credentail-validation.png" alt="자격증명 검증 "></p>
+<p><img src="../credential-validation-issue-key.png" alt="자격증명 검증 키 발급 "></p>
+<h3>3rd Party App 사용 예</h3>
+<p><img src="../3rd-party-app-signup-example.png" alt=" 가입"></p>
+<p><img src="../3rd-party-app-login-example.png" alt=" 로그인"></p></div>
         </div>
       </div>
     </div>
     <script type="text/javascript" src="../../reformat-mermaid.js"></script>
-    <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.esm.min.mjs';</script>
+    <script type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs';</script>
   </body>
 </html>
