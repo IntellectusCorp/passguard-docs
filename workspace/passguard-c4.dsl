@@ -41,17 +41,44 @@ workspace "PassGuard"  {
                     description "API server"
                     technology "NestJS"
 
-                    credentialModule = component "credentialModule" {
-                        description "credential module"
-                        technology "NextJS Module"
+                    group "Application Layer" {
+
+                        loginService = component "Login Service" {
+                            technology "NextJS Service"
+                            properties {
+                                "Layer" "Application"
+                            }
+                        }
                     }
-                    serviceModule = component "serviceModule" {
-                        description "service module"
-                        technology "NextJS Module"
+
+                    group "Business Logic Layer"{
+                        
+                        authenticationService = component "Authentication Service" {
+                            description "Business Logic: Authentication Service"
+                            technology "NextJS Service"
+                            properties {
+                                "Layer" "Business Logic"
+                            }
+                        }
+
+                        authorizationService = component "Authorization Service" {
+                            description "Business Logic: Authorization Service"
+                            technology "NextJS Service"
+                            properties {
+                                "Layer" "Business Logic"
+                            }
+                        }
                     }
-                    userModule = component "userModule" {
-                        description "user module"
-                        technology "NextJS Module"
+
+                    group "Infrastructure Layer"{
+                        
+                        repository = component "General Repository" {
+                            description "Business Logic: Authentication Service"
+                            technology "prisma"
+                            properties {
+                                "Layer" "Infrastructure"
+                            }
+                        }
                     }
                 }
                 
@@ -84,19 +111,23 @@ workspace "PassGuard"  {
         loginWebApplication -> passguardServerApplication
         loginWebApplication -> loginWebApplication
 
-        3rdPartyApplication -> serviceModule
-        3rdPartyApplication -> credentialModule
 
         # relationships to/from components
-        credentialModule -> serviceModule
-        serviceModule -> userModule
+        loginService -> authenticationService
+        authenticationService -> repository
 
-        userModule -> userDataModel
-        credentialModule -> credentialDataModel
+        loginWebApplication -> loginService
+
+        repository -> database
 
     }
 
     views {
+        properties {
+                structurizr.groups true
+                "c4plantuml.elementProperties" "true"
+            }
+
         systemlandscape "SystemLandscape" {
             include *
             exclude 3rdPartyApplication
@@ -126,16 +157,6 @@ workspace "PassGuard"  {
             description ""
             include *
             autoLayout
-        }
-
-        dynamic passguardServerApplication "DynamicVeiwCredentialRegistration" {
-            description "Process to credential registration."
-            autoLayout lr
-
-            3rdPartyApplication -> credentialModule "request with {service_id, user_id, domain}"
-            credentialModule -> serviceModule "request to validate"
-            serviceModule -> userModule "proceed user creation with duplication checking "
-            credentialModule -> 3rdPartyApplication "response"
         }
 
 
