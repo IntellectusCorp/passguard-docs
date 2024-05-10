@@ -6,19 +6,20 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches: "main"
 
   # Allows you to run this workflow manually from the Actions tab
   # workflow_dispatch:
-  
+
 env:
   IMAGE_NAME: "avisi-cloud/structurizr-site-generatr"
 
+permissions:
+  contents: write
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # publish generated statis site through github pages 
+  # publish generated statis site through github pages
   publish-site:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -26,36 +27,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
         with:
           persist-credentials: false
           fetch-depth: 0
-      # - uses: actions/setup-java@v3
-      #   with:
-      #     distribution: temurin
-      #     java-version: 19
 
-      # - name: Download binaries
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: binaries
-      #     path: build/install
-
-      # - name: Set up environment
-      #   run: |
-      #     sudo apt-get install -y graphviz
-      #     chmod +x build/install/structurizr-site-generatr/bin/structurizr-site-generatr
-          
       - name: Build site
         run: >
           docker run --user root -t --rm -v ${{ github.workspace }}:/var/model
           ghcr.io/avisi-cloud/structurizr-site-generatr generate-site
           --workspace-file workspace/passguard-c4.dsl --assets-dir workspace/docs/assets
         shell: bash
-          
+
       - name: Publish site
-        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        uses: JamesIves/github-pages-deploy-action@main
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build/site        
+          folder: build/site
+          branch: gh-pages
