@@ -13,10 +13,10 @@ Container(PassGuardIdentity.IdentityModule, "Identity Module", $techn="", $descr
 Container(PassGuardIdentity.PassGuardDatabase, "PassGuard Database", $techn="DynamoDB", $descr="", $tags="", $link="")
 
 Container_Boundary("PassGuardIdentity.CredentialModule_boundary", "Credential Module", $tags="") {
-  Component(PassGuardIdentity.CredentialModule.OauthService, "Oauth Service", $techn="", $descr="OAuth2.0 연동 서비스", $tags="", $link="")
-  Component(PassGuardIdentity.CredentialModule.OauthRepository, "Oauth Repository", $techn="", $descr="OAuth2.0 인증 정보 저장소", $tags="", $link="")
-  Component(PassGuardIdentity.CredentialModule.PasskeyService, "Passkey Service", $techn="", $descr="Passkey 연동 서비스", $tags="", $link="")
-  Component(PassGuardIdentity.CredentialModule.PasskeyRepository, "Passkey Repository", $techn="", $descr="Passkey 인증 정보 저장소", $tags="", $link="")
+  Component(PassGuardIdentity.CredentialModule.OauthService, "Oauth Service", $techn="", $descr="OAuth2.0 connector", $tags="", $link="")
+  Component(PassGuardIdentity.CredentialModule.OauthRepository, "Oauth Repository", $techn="", $descr="", $tags="", $link="")
+  Component(PassGuardIdentity.CredentialModule.PasskeyService, "Passkey Service", $techn="", $descr="Passkey connector", $tags="", $link="")
+  Component(PassGuardIdentity.CredentialModule.PasskeyRepository, "Passkey Repository", $techn="", $descr="", $tags="", $link="")
 }
 
 Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.CredentialModule.OauthService, "", $techn="", $tags="", $link="")

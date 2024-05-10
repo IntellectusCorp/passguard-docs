@@ -9,18 +9,18 @@ top to bottom direction
 
 AddBoundaryTag("PassGuard", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_1, "PassGuard", $tags="PassGuard") {
-  System(PassGuardIdentity, "PassGuard Identity", $descr="PassGuard 인증 시스템", $tags="", $link="")
+  System(PassGuardIdentity, "PassGuard Identity", $descr="", $tags="", $link="")
 }
 
 AddBoundaryTag("Users", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_2, "Users", $tags="Users") {
-  Person(WebServiceUser, "WebServiceUser", $descr="웹 서비스의 사용자", $tags="", $link="")
+  Person(WebServiceUser, "WebServiceUser", $descr="web service user", $tags="", $link="")
 }
 
 AddBoundaryTag("WebService", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_3, "WebService", $tags="WebService") {
-  Person(WebServiceDeveloper, "WebServiceDeveloper", $descr="웹 서비스 개발자", $tags="", $link="")
-  System(WebService, "Web Service", $descr="인증 시스템이 필요한 웹 서비스", $tags="", $link="")
+  Person(WebServiceDeveloper, "WebServiceDeveloper", $descr="web service developer", $tags="", $link="")
+  System(WebService, "Web Service", $descr="web service requiring login system", $tags="", $link="")
 }
 
 
