@@ -1,0 +1,39 @@
+@startuml
+set separator none
+title PassGuard Identity - Containers
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+
+System_Boundary("PassGuardIdentity_boundary", "PassGuard Identity", $tags="") {
+  AddBoundaryTag("PassGuard Backend", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
+  Boundary(group_1, "PassGuard Backend", $tags="PassGuard Backend") {
+    Container(PassGuardIdentity.ClientModule, "Client Module", $techn="", $descr="PassGuard Client System, like web service", $tags="", $link="")
+    Container(PassGuardIdentity.CredentialModule, "Credential Module", $techn="", $descr="External Authenticator Connector", $tags="", $link="")
+    Container(PassGuardIdentity.SessionModule, "Session Module", $techn="", $descr="인증 세션 모듈", $tags="", $link="")
+    Container(PassGuardIdentity.UserModule, "User Module", $techn="", $descr="PassGuard User System", $tags="", $link="")
+    Container(PassGuardIdentity.PassGuardDatabase, "PassGuard Database", $techn="DynamoDB", $descr="", $tags="", $link="")
+    Container(PassGuardIdentity.IdentityModule, "Identity Module", $techn="", $descr="", $tags="", $link="")
+    Container(PassGuardIdentity.AuthModule, "Auth Module", $techn="", $descr="Internal Credential System", $tags="", $link="")
+  }
+
+  Container(PassGuardIdentity.PassGuardIdentityWeb, "PassGuard Identity Web", $techn="", $descr="Authenticator(Client Device)", $tags="", $link="")
+}
+
+Rel(PassGuardIdentity.PassGuardIdentityWeb, PassGuardIdentity.IdentityModule, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.AuthModule, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.ClientModule, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.UserModule, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.SessionModule, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.CredentialModule, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.AuthModule, PassGuardIdentity.PassGuardDatabase, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.ClientModule, PassGuardIdentity.PassGuardDatabase, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.UserModule, PassGuardIdentity.PassGuardDatabase, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.CredentialModule, PassGuardIdentity.PassGuardDatabase, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.SessionModule, PassGuardIdentity.PassGuardDatabase, "", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml

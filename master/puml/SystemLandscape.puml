@@ -9,16 +9,23 @@ top to bottom direction
 
 AddBoundaryTag("PassGuard", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_1, "PassGuard", $tags="PassGuard") {
-  System(IdentitySolution, "Identity Solution", $descr="Identity Solution Provider.", $tags="", $link="")
+  System(PassGuardIdentity, "PassGuard Identity", $descr="PassGuard 인증 시스템", $tags="", $link="")
 }
 
 AddBoundaryTag("Users", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
 Boundary(group_2, "Users", $tags="Users") {
-  Person(ExtDeveloper, "Ext.Developer", $descr="A user of this system, usually who are going to implement some software system.", $tags="", $link="")
+  Person(WebServiceUser, "WebServiceUser", $descr="웹 서비스의 사용자", $tags="", $link="")
+}
+
+AddBoundaryTag("WebService", $borderColor="#cccccc", $fontColor="#cccccc", $borderStyle="Dashed", $borderThickness="1")
+Boundary(group_3, "WebService", $tags="WebService") {
+  Person(WebServiceDeveloper, "WebServiceDeveloper", $descr="웹 서비스 개발자", $tags="", $link="")
+  System(WebService, "Web Service", $descr="인증 시스템이 필요한 웹 서비스", $tags="", $link="")
 }
 
 
-Rel(ExtDeveloper, IdentitySolution, "use authtication capability", $techn="", $tags="", $link="")
+Rel(WebServiceUser, PassGuardIdentity, "", $techn="", $tags="", $link="")
+Rel(WebService, PassGuardIdentity, "", $techn="", $tags="", $link="")
 
 SHOW_LEGEND(true)
 @enduml

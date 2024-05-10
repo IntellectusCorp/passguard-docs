@@ -52,235 +52,662 @@
   "id" : 0,
   "model" : {
     "people" : [ {
-      "description" : "A user of this system, usually who are going to implement some software system.",
-      "group" : "Users",
+      "description" : "웹 서비스 개발자",
+      "group" : "WebService",
       "id" : "1",
       "location" : "Unspecified",
-      "name" : "Ext.Developer",
+      "name" : "WebServiceDeveloper",
       "properties" : {
-        "structurizr.dsl.identifier" : "externeldeveloper"
+        "structurizr.dsl.identifier" : "webservicedeveloper"
+      },
+      "tags" : "Element,Person"
+    }, {
+      "description" : "웹 서비스의 사용자",
+      "group" : "Users",
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "WebServiceUser",
+      "properties" : {
+        "structurizr.dsl.identifier" : "webserviceuser"
       },
       "relationships" : [ {
-        "description" : "use authtication capability",
-        "destinationId" : "3",
-        "id" : "14",
+        "destinationId" : "4",
+        "id" : "32",
         "properties" : {
-          "structurizr.dsl.identifier" : "d6f704dc-23ff-49f3-a1fe-cfeee73b56e9"
+          "structurizr.dsl.identifier" : "dbdc770f-d1e9-4611-820c-9a094b6634d0"
         },
-        "sourceId" : "1",
+        "sourceId" : "3",
         "tags" : "Relationship"
       } ],
       "tags" : "Element,Person"
     } ],
     "softwareSystems" : [ {
-      "description" : "A system to use PassGuard as a identity provider",
+      "description" : "인증 시스템이 필요한 웹 서비스",
       "documentation" : { },
-      "group" : "3rd Party System",
+      "group" : "WebService",
       "id" : "2",
       "location" : "Unspecified",
-      "name" : "3rd-Party Application",
+      "name" : "Web Service",
       "properties" : {
-        "structurizr.dsl.identifier" : "3rdpartyapplication"
+        "structurizr.dsl.identifier" : "webservice"
       },
       "relationships" : [ {
         "destinationId" : "4",
-        "id" : "16",
+        "id" : "33",
         "properties" : {
-          "structurizr.dsl.identifier" : "d6607c18-eb2f-4830-a3e4-aab8550a80eb"
+          "structurizr.dsl.identifier" : "ae1e450c-4a44-46ea-9419-9fb2ed099aa1"
         },
         "sourceId" : "2",
         "tags" : "Relationship"
-      }, {
-        "destinationId" : "3",
-        "id" : "17",
-        "linkedRelationshipId" : "16",
-        "sourceId" : "2"
       } ],
       "tags" : "Element,Software System"
     }, {
       "containers" : [ {
         "description" : "Authenticator(Client Device)",
         "documentation" : { },
-        "id" : "4",
-        "name" : "Login Web Application",
-        "properties" : {
-          "structurizr.dsl.identifier" : "loginwebapplication"
-        },
-        "relationships" : [ {
-          "destinationId" : "5",
-          "id" : "18",
-          "properties" : {
-            "structurizr.dsl.identifier" : "180212c3-809f-47ed-83f3-bfc928761196"
-          },
-          "sourceId" : "4",
-          "tags" : "Relationship"
-        }, {
-          "destinationId" : "4",
-          "id" : "19",
-          "properties" : {
-            "structurizr.dsl.identifier" : "c5a7aa4a-42f4-4bf3-8b99-c304cde8ac51"
-          },
-          "sourceId" : "4",
-          "tags" : "Relationship"
-        }, {
-          "destinationId" : "6",
-          "id" : "22",
-          "properties" : {
-            "structurizr.dsl.identifier" : "65107184-b7b9-4774-9c87-5f8c499a806f"
-          },
-          "sourceId" : "4",
-          "tags" : "Relationship"
-        } ],
-        "tags" : "Element,Container,Web Browser",
-        "technology" : "NextJS"
-      }, {
-        "components" : [ {
-          "documentation" : { },
-          "group" : "Application Layer",
-          "id" : "6",
-          "name" : "Login Service",
-          "properties" : {
-            "structurizr.dsl.identifier" : "loginservice",
-            "Layer" : "Application"
-          },
-          "relationships" : [ {
-            "destinationId" : "7",
-            "id" : "20",
-            "properties" : {
-              "structurizr.dsl.identifier" : "644965e3-08b3-4094-b76c-01a263296cf7"
-            },
-            "sourceId" : "6",
-            "tags" : "Relationship"
-          } ],
-          "tags" : "Element,Component",
-          "technology" : "NextJS Service"
-        }, {
-          "description" : "Business Logic: Authentication Service",
-          "documentation" : { },
-          "group" : "Business Logic Layer",
-          "id" : "7",
-          "name" : "Authentication Service",
-          "properties" : {
-            "structurizr.dsl.identifier" : "authenticationservice",
-            "Layer" : "Business Logic"
-          },
-          "relationships" : [ {
-            "destinationId" : "9",
-            "id" : "21",
-            "properties" : {
-              "structurizr.dsl.identifier" : "cc759099-cb6e-4ebf-ab86-0f77ef3cdfbe"
-            },
-            "sourceId" : "7",
-            "tags" : "Relationship"
-          } ],
-          "tags" : "Element,Component",
-          "technology" : "NextJS Service"
-        }, {
-          "description" : "Business Logic: Authorization Service",
-          "documentation" : { },
-          "group" : "Business Logic Layer",
-          "id" : "8",
-          "name" : "Authorization Service",
-          "properties" : {
-            "structurizr.dsl.identifier" : "authorizationservice",
-            "Layer" : "Business Logic"
-          },
-          "tags" : "Element,Component",
-          "technology" : "NextJS Service"
-        }, {
-          "description" : "Business Logic: Authentication Service",
-          "documentation" : { },
-          "group" : "Infrastructure Layer",
-          "id" : "9",
-          "name" : "General Repository",
-          "properties" : {
-            "structurizr.dsl.identifier" : "repository",
-            "Layer" : "Infrastructure"
-          },
-          "relationships" : [ {
-            "destinationId" : "10",
-            "id" : "23",
-            "properties" : {
-              "structurizr.dsl.identifier" : "4a80f2b2-d3bb-41e7-9d8f-8f329e5de1b8"
-            },
-            "sourceId" : "9",
-            "tags" : "Relationship"
-          } ],
-          "tags" : "Element,Component",
-          "technology" : "prisma"
-        } ],
-        "description" : "API server",
-        "documentation" : { },
         "id" : "5",
-        "name" : "PassGuard Server Application",
+        "name" : "PassGuard Identity Web",
         "properties" : {
-          "structurizr.dsl.identifier" : "passguardserverapplication"
+          "structurizr.dsl.identifier" : "frontend"
         },
         "relationships" : [ {
-          "destinationId" : "10",
-          "id" : "15",
+          "destinationId" : "6",
+          "id" : "34",
           "properties" : {
-            "structurizr.dsl.identifier" : "597b37e1-9229-479b-9f36-c843c74f10db"
+            "structurizr.dsl.identifier" : "9f02438d-1c02-4644-8382-392a54749938"
           },
           "sourceId" : "5",
           "tags" : "Relationship"
         } ],
-        "tags" : "Element,Container",
-        "technology" : "NestJS"
+        "tags" : "Element,Container,Web Browser"
       }, {
         "components" : [ {
-          "description" : "User Data Model",
+          "description" : "PassGuard Identity Solution Usecase",
           "documentation" : { },
-          "id" : "11",
-          "name" : "userDataModel",
+          "id" : "7",
+          "name" : "Identity User Usecase",
           "properties" : {
-            "structurizr.dsl.identifier" : "userdatamodel"
+            "structurizr.dsl.identifier" : "identityusecase"
           },
+          "relationships" : [ {
+            "destinationId" : "9",
+            "id" : "35",
+            "properties" : {
+              "structurizr.dsl.identifier" : "22932cef-f908-4262-9b58-0264c7aaef63"
+            },
+            "sourceId" : "7",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "8",
+            "id" : "36",
+            "linkedRelationshipId" : "35",
+            "sourceId" : "7"
+          }, {
+            "destinationId" : "12",
+            "id" : "39",
+            "properties" : {
+              "structurizr.dsl.identifier" : "883037fe-b655-4291-bc80-a4224474a80d"
+            },
+            "sourceId" : "7",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "11",
+            "id" : "40",
+            "linkedRelationshipId" : "39",
+            "sourceId" : "7"
+          }, {
+            "destinationId" : "23",
+            "id" : "43",
+            "properties" : {
+              "structurizr.dsl.identifier" : "1a308060-0736-4d16-a9d9-f5ceda08b160"
+            },
+            "sourceId" : "7",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "22",
+            "id" : "44",
+            "linkedRelationshipId" : "43",
+            "sourceId" : "7"
+          }, {
+            "destinationId" : "20",
+            "id" : "47",
+            "properties" : {
+              "structurizr.dsl.identifier" : "621b493f-2a7d-41a1-b862-6b5707f2ff26"
+            },
+            "sourceId" : "7",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "19",
+            "id" : "48",
+            "linkedRelationshipId" : "47",
+            "sourceId" : "7"
+          }, {
+            "destinationId" : "15",
+            "id" : "51",
+            "properties" : {
+              "structurizr.dsl.identifier" : "0258ff13-785d-426f-a8d7-f43fb7635cbc"
+            },
+            "sourceId" : "7",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "14",
+            "id" : "52",
+            "linkedRelationshipId" : "51",
+            "sourceId" : "7"
+          }, {
+            "destinationId" : "17",
+            "id" : "55",
+            "properties" : {
+              "structurizr.dsl.identifier" : "cadd1929-2f69-4742-8320-ccb376bf3183"
+            },
+            "sourceId" : "7",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "documentation" : { },
+        "group" : "PassGuard Backend",
+        "id" : "6",
+        "name" : "Identity Module",
+        "properties" : {
+          "structurizr.dsl.identifier" : "identitymodule"
+        },
+        "relationships" : [ {
+          "destinationId" : "9",
+          "id" : "37",
+          "linkedRelationshipId" : "35",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "8",
+          "id" : "38",
+          "linkedRelationshipId" : "35",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "12",
+          "id" : "41",
+          "linkedRelationshipId" : "39",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "11",
+          "id" : "42",
+          "linkedRelationshipId" : "39",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "23",
+          "id" : "45",
+          "linkedRelationshipId" : "43",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "22",
+          "id" : "46",
+          "linkedRelationshipId" : "43",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "20",
+          "id" : "49",
+          "linkedRelationshipId" : "47",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "19",
+          "id" : "50",
+          "linkedRelationshipId" : "47",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "15",
+          "id" : "53",
+          "linkedRelationshipId" : "51",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "14",
+          "id" : "54",
+          "linkedRelationshipId" : "51",
+          "sourceId" : "6"
+        }, {
+          "destinationId" : "17",
+          "id" : "56",
+          "linkedRelationshipId" : "55",
+          "sourceId" : "6"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "components" : [ {
+          "description" : "코드 발급기, 토큰 발급기",
+          "documentation" : { },
+          "id" : "9",
+          "name" : "Auth Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "authservice"
+          },
+          "relationships" : [ {
+            "destinationId" : "10",
+            "id" : "57",
+            "properties" : {
+              "structurizr.dsl.identifier" : "687cb6ff-d40b-4ac2-8ee8-44b1ab23bd18"
+            },
+            "sourceId" : "9",
+            "tags" : "Relationship"
+          } ],
           "tags" : "Element,Component"
         }, {
-          "description" : "Service Data Model",
+          "documentation" : { },
+          "id" : "10",
+          "name" : "Code Respository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "coderepository"
+          },
+          "relationships" : [ {
+            "destinationId" : "26",
+            "id" : "58",
+            "properties" : {
+              "structurizr.dsl.identifier" : "6a75d324-c572-4945-855e-dc48eb47f7d9"
+            },
+            "sourceId" : "10",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "25",
+            "id" : "59",
+            "linkedRelationshipId" : "58",
+            "sourceId" : "10"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "Internal Credential System",
+        "documentation" : { },
+        "group" : "PassGuard Backend",
+        "id" : "8",
+        "name" : "Auth Module",
+        "properties" : {
+          "structurizr.dsl.identifier" : "authmodule"
+        },
+        "relationships" : [ {
+          "destinationId" : "26",
+          "id" : "60",
+          "linkedRelationshipId" : "58",
+          "sourceId" : "8"
+        }, {
+          "destinationId" : "25",
+          "id" : "61",
+          "linkedRelationshipId" : "58",
+          "sourceId" : "8"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "components" : [ {
+          "description" : "client 정보 조회 및 검증 서비스",
           "documentation" : { },
           "id" : "12",
-          "name" : "serviceDataModel",
+          "name" : "Client Service",
           "properties" : {
-            "structurizr.dsl.identifier" : "servicedatamodel"
+            "structurizr.dsl.identifier" : "clientservice"
+          },
+          "relationships" : [ {
+            "destinationId" : "13",
+            "id" : "62",
+            "properties" : {
+              "structurizr.dsl.identifier" : "2090c0b7-8946-4666-82fe-fbe608501406"
+            },
+            "sourceId" : "12",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "13",
+          "name" : "Client Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "clientrepository"
+          },
+          "relationships" : [ {
+            "destinationId" : "28",
+            "id" : "63",
+            "properties" : {
+              "structurizr.dsl.identifier" : "5da7e42b-cc8a-470f-a227-edb5365b8f64"
+            },
+            "sourceId" : "13",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "25",
+            "id" : "64",
+            "linkedRelationshipId" : "63",
+            "sourceId" : "13"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "PassGuard Client System, like web service",
+        "documentation" : { },
+        "group" : "PassGuard Backend",
+        "id" : "11",
+        "name" : "Client Module",
+        "properties" : {
+          "structurizr.dsl.identifier" : "clientmodule"
+        },
+        "relationships" : [ {
+          "destinationId" : "28",
+          "id" : "65",
+          "linkedRelationshipId" : "63",
+          "sourceId" : "11"
+        }, {
+          "destinationId" : "25",
+          "id" : "66",
+          "linkedRelationshipId" : "63",
+          "sourceId" : "11"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "components" : [ {
+          "description" : "OAuth2.0 연동 서비스",
+          "documentation" : { },
+          "id" : "15",
+          "name" : "Oauth Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "oauthservice"
+          },
+          "relationships" : [ {
+            "destinationId" : "16",
+            "id" : "72",
+            "properties" : {
+              "structurizr.dsl.identifier" : "a5319be3-50f7-4005-8e8b-fb311421f55e"
+            },
+            "sourceId" : "15",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "OAuth2.0 인증 정보 저장소",
+          "documentation" : { },
+          "id" : "16",
+          "name" : "Oauth Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "oauthrepository"
+          },
+          "relationships" : [ {
+            "destinationId" : "29",
+            "id" : "73",
+            "properties" : {
+              "structurizr.dsl.identifier" : "9474854b-6e12-445a-86db-db5a87c93862"
+            },
+            "sourceId" : "16",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "25",
+            "id" : "74",
+            "linkedRelationshipId" : "73",
+            "sourceId" : "16"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Passkey 연동 서비스",
+          "documentation" : { },
+          "id" : "17",
+          "name" : "Passkey Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "passkeyservice"
+          },
+          "relationships" : [ {
+            "destinationId" : "18",
+            "id" : "77",
+            "properties" : {
+              "structurizr.dsl.identifier" : "7781d3e9-87b2-4039-9cbc-ecc21ba796b3"
+            },
+            "sourceId" : "17",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "Passkey 인증 정보 저장소",
+          "documentation" : { },
+          "id" : "18",
+          "name" : "Passkey Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "passkeyrepository"
+          },
+          "relationships" : [ {
+            "destinationId" : "30",
+            "id" : "78",
+            "properties" : {
+              "structurizr.dsl.identifier" : "c8cb8abf-5588-49a7-be09-838f9d702afe"
+            },
+            "sourceId" : "18",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "25",
+            "id" : "79",
+            "linkedRelationshipId" : "78",
+            "sourceId" : "18"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "External Authenticator Connector",
+        "documentation" : { },
+        "group" : "PassGuard Backend",
+        "id" : "14",
+        "name" : "Credential Module",
+        "properties" : {
+          "structurizr.dsl.identifier" : "credentialmodule"
+        },
+        "relationships" : [ {
+          "destinationId" : "29",
+          "id" : "75",
+          "linkedRelationshipId" : "73",
+          "sourceId" : "14"
+        }, {
+          "destinationId" : "25",
+          "id" : "76",
+          "linkedRelationshipId" : "73",
+          "sourceId" : "14"
+        }, {
+          "destinationId" : "30",
+          "id" : "80",
+          "linkedRelationshipId" : "78",
+          "sourceId" : "14"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "components" : [ {
+          "description" : "세션 조회 및 변경 기능 제공",
+          "documentation" : { },
+          "id" : "20",
+          "name" : "Session Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "sessionservice"
+          },
+          "relationships" : [ {
+            "destinationId" : "21",
+            "id" : "81",
+            "properties" : {
+              "structurizr.dsl.identifier" : "3a1663d8-32e6-44a7-b606-e0bbce3e7350"
+            },
+            "sourceId" : "20",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "description" : "{}",
+          "documentation" : { },
+          "id" : "21",
+          "name" : "Session Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "sessionrepository"
+          },
+          "relationships" : [ {
+            "destinationId" : "31",
+            "id" : "82",
+            "properties" : {
+              "structurizr.dsl.identifier" : "49bc2774-9740-4b0e-9202-6819a6851d6a"
+            },
+            "sourceId" : "21",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "25",
+            "id" : "83",
+            "linkedRelationshipId" : "82",
+            "sourceId" : "21"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "인증 세션 모듈",
+        "documentation" : { },
+        "group" : "PassGuard Backend",
+        "id" : "19",
+        "name" : "Session Module",
+        "properties" : {
+          "structurizr.dsl.identifier" : "sessionmodule"
+        },
+        "relationships" : [ {
+          "destinationId" : "31",
+          "id" : "84",
+          "linkedRelationshipId" : "82",
+          "sourceId" : "19"
+        }, {
+          "destinationId" : "25",
+          "id" : "85",
+          "linkedRelationshipId" : "82",
+          "sourceId" : "19"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "components" : [ {
+          "description" : "사용자 정보 기본 서비스",
+          "documentation" : { },
+          "id" : "23",
+          "name" : "User Service",
+          "properties" : {
+            "structurizr.dsl.identifier" : "userservice"
+          },
+          "relationships" : [ {
+            "destinationId" : "24",
+            "id" : "67",
+            "properties" : {
+              "structurizr.dsl.identifier" : "4ba9447d-d740-4aee-a972-e2bafb670c4a"
+            },
+            "sourceId" : "23",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "24",
+          "name" : "User Repository",
+          "properties" : {
+            "structurizr.dsl.identifier" : "userrepository"
+          },
+          "relationships" : [ {
+            "destinationId" : "27",
+            "id" : "68",
+            "properties" : {
+              "structurizr.dsl.identifier" : "488775ec-a762-4076-a901-5ef2764a3904"
+            },
+            "sourceId" : "24",
+            "tags" : "Relationship"
+          }, {
+            "destinationId" : "25",
+            "id" : "69",
+            "linkedRelationshipId" : "68",
+            "sourceId" : "24"
+          } ],
+          "tags" : "Element,Component"
+        } ],
+        "description" : "PassGuard User System",
+        "documentation" : { },
+        "group" : "PassGuard Backend",
+        "id" : "22",
+        "name" : "User Module",
+        "properties" : {
+          "structurizr.dsl.identifier" : "usermodule"
+        },
+        "relationships" : [ {
+          "destinationId" : "27",
+          "id" : "70",
+          "linkedRelationshipId" : "68",
+          "sourceId" : "22"
+        }, {
+          "destinationId" : "25",
+          "id" : "71",
+          "linkedRelationshipId" : "68",
+          "sourceId" : "22"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "components" : [ {
+          "description" : "{}",
+          "documentation" : { },
+          "id" : "26",
+          "name" : "Code Storage",
+          "properties" : {
+            "structurizr.dsl.identifier" : "codestorage"
           },
           "tags" : "Element,Component"
         }, {
-          "description" : "Credential Data Model",
+          "description" : "{}",
           "documentation" : { },
-          "id" : "13",
-          "name" : "credentialDataModel",
+          "id" : "27",
+          "name" : "User Storage",
           "properties" : {
-            "structurizr.dsl.identifier" : "credentialdatamodel"
+            "structurizr.dsl.identifier" : "userstorage"
+          },
+          "tags" : "Element,Component"
+        }, {
+          "description" : "{}",
+          "documentation" : { },
+          "id" : "28",
+          "name" : "Client Storage",
+          "properties" : {
+            "structurizr.dsl.identifier" : "clientstorage"
+          },
+          "tags" : "Element,Component"
+        }, {
+          "description" : "{}",
+          "documentation" : { },
+          "id" : "29",
+          "name" : "Oauth Storage",
+          "properties" : {
+            "structurizr.dsl.identifier" : "oauthstorage"
+          },
+          "tags" : "Element,Component"
+        }, {
+          "description" : "{}",
+          "documentation" : { },
+          "id" : "30",
+          "name" : "Passkey Storage",
+          "properties" : {
+            "structurizr.dsl.identifier" : "passkeystorage"
+          },
+          "tags" : "Element,Component"
+        }, {
+          "description" : "{}",
+          "documentation" : { },
+          "id" : "31",
+          "name" : "Session Storage",
+          "properties" : {
+            "structurizr.dsl.identifier" : "sessionstorage"
           },
           "tags" : "Element,Component"
         } ],
-        "description" : "Stores identification related data to athenticate",
         "documentation" : { },
-        "id" : "10",
-        "name" : "Database",
+        "group" : "PassGuard Backend",
+        "id" : "25",
+        "name" : "PassGuard Database",
         "properties" : {
-          "structurizr.dsl.identifier" : "database"
+          "structurizr.dsl.identifier" : "db"
         },
-        "tags" : "Element,Container,Database",
-        "technology" : "MySQL"
+        "tags" : "Element,Container",
+        "technology" : "DynamoDB"
       } ],
-      "description" : "Identity Solution Provider.",
+      "description" : "PassGuard 인증 시스템",
       "documentation" : { },
       "group" : "PassGuard",
-      "id" : "3",
+      "id" : "4",
       "location" : "Unspecified",
-      "name" : "Identity Solution",
+      "name" : "PassGuard Identity",
       "properties" : {
-        "structurizr.dsl.identifier" : "identitysolution"
+        "structurizr.dsl.identifier" : "passguardidentity"
       },
       "tags" : "Element,Software System"
     } ]
   },
   "name" : "PassGuard",
   "properties" : {
-    "structurizr.dsl" : "LyoKICogVGhpcyBpcyBhIGNvbWJpbmVkIHZlcnNpb24gb2YgdGhlIGZvbGxvd2luZyB3b3Jrc3BhY2VzLCB3aXRoIGF1dG9tYXRpYyBsYXlvdXQgZW5hYmxlZDoKICoKICogLSAiQmlnIEJhbmsgcGxjIC0gU3lzdGVtIExhbmRzY2FwZSIgKGh0dHBzOi8vc3RydWN0dXJpenIuY29tL3NoYXJlLzI4MjAxLykKICogLSAiQmlnIEJhbmsgcGxjIC0gSW50ZXJuZXQgQmFua2luZyBTeXN0ZW0iIChodHRwczovL3N0cnVjdHVyaXpyLmNvbS9zaGFyZS8zNjE0MS8pCiovCndvcmtzcGFjZSAiUGFzc0d1YXJkIiAgewogICAgZGVzY3JpcHRpb24gIlRoaXMgaXMgdG8gZGVzY3JpYmUgdGhlIHByb2plY3QgY2FsbGVkIHBhc3NndWFyZCwgd2hpY2ggaXMgdG8gcHJvdmlkZSBjb21tb24gdGVjaG5pY2FsIGNhcGFiaWxpdGllcyB0byB0aGUgZGV2ZWxvcGVyLiIgCiAgICAKICAgICFkb2NzIGRvY3MKCiAgICBtb2RlbCB7CiAgICAKICAgICAgICBncm91cCAiVXNlcnMiIHsKICAgICAgICAgICAgCiAgICAgICAgICAgIGV4dGVybmVsRGV2ZWxvcGVyID0gcGVyc29uICJFeHQuRGV2ZWxvcGVyIiB7CiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJBIHVzZXIgb2YgdGhpcyBzeXN0ZW0sIHVzdWFsbHkgd2hvIGFyZSBnb2luZyB0byBpbXBsZW1lbnQgc29tZSBzb2Z0d2FyZSBzeXN0ZW0uICIKICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICAKICAgICAgICBncm91cCAiM3JkIFBhcnR5IFN5c3RlbSIgewogICAgICAgIAogICAgICAgICAgICAzcmRQYXJ0eUFwcGxpY2F0aW9uID0gc29mdHdhcmVzeXN0ZW0gIjNyZC1QYXJ0eSBBcHBsaWNhdGlvbiIgewogICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIkEgc3lzdGVtIHRvIHVzZSBQYXNzR3VhcmQgYXMgYSBpZGVudGl0eSBwcm92aWRlciIKICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICAKICAgICAgICAKICAgICAgICBncm91cCAiUGFzc0d1YXJkIiB7CgogICAgICAgICAgICBpZGVudGl0eVNvbHV0aW9uID0gc29mdHdhcmVzeXN0ZW0gIklkZW50aXR5IFNvbHV0aW9uIiB7CiAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiSWRlbnRpdHkgU29sdXRpb24gUHJvdmlkZXIuIgogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBsb2dpbldlYkFwcGxpY2F0aW9uID0gY29udGFpbmVyICJMb2dpbiBXZWIgQXBwbGljYXRpb24iIHsKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiQXV0aGVudGljYXRvcihDbGllbnQgRGV2aWNlKSIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJOZXh0SlMiCiAgICAgICAgICAgICAgICAgICAgdGFncyAiV2ViIEJyb3dzZXIiCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgcGFzc2d1YXJkU2VydmVyQXBwbGljYXRpb24gPSBjb250YWluZXIgIlBhc3NHdWFyZCBTZXJ2ZXIgQXBwbGljYXRpb24iIHsKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiQVBJIHNlcnZlciIKICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJOZXN0SlMiCgogICAgICAgICAgICAgICAgICAgIGdyb3VwICJBcHBsaWNhdGlvbiBMYXllciIgewoKICAgICAgICAgICAgICAgICAgICAgICAgbG9naW5TZXJ2aWNlID0gY29tcG9uZW50ICJMb2dpbiBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJOZXh0SlMgU2VydmljZSIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXMgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJMYXllciIgIkFwcGxpY2F0aW9uIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICBncm91cCAiQnVzaW5lc3MgTG9naWMgTGF5ZXIiewogICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgYXV0aGVudGljYXRpb25TZXJ2aWNlID0gY29tcG9uZW50ICJBdXRoZW50aWNhdGlvbiBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiQnVzaW5lc3MgTG9naWM6IEF1dGhlbnRpY2F0aW9uIFNlcnZpY2UiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJOZXh0SlMgU2VydmljZSIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXMgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJMYXllciIgIkJ1c2luZXNzIExvZ2ljIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgICAgICBhdXRob3JpemF0aW9uU2VydmljZSA9IGNvbXBvbmVudCAiQXV0aG9yaXphdGlvbiBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiQnVzaW5lc3MgTG9naWM6IEF1dGhvcml6YXRpb24gU2VydmljZSIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRlY2hub2xvZ3kgIk5leHRKUyBTZXJ2aWNlIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllcyB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIkxheWVyIiAiQnVzaW5lc3MgTG9naWMiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgIGdyb3VwICJJbmZyYXN0cnVjdHVyZSBMYXllciJ7CiAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICByZXBvc2l0b3J5ID0gY29tcG9uZW50ICJHZW5lcmFsIFJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJCdXNpbmVzcyBMb2dpYzogQXV0aGVudGljYXRpb24gU2VydmljZSIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRlY2hub2xvZ3kgInByaXNtYSIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXMgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJMYXllciIgIkluZnJhc3RydWN0dXJlIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBkYXRhYmFzZSA9IGNvbnRhaW5lciAiRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiU3RvcmVzIGlkZW50aWZpY2F0aW9uIHJlbGF0ZWQgZGF0YSB0byBhdGhlbnRpY2F0ZSIgICAgCiAgICAgICAgICAgICAgICAgICAgdGVjaG5vbG9neSAiTXlTUUwiCiAgICAgICAgICAgICAgICAgICAgdGFncyAiRGF0YWJhc2UiCgogICAgICAgICAgICAgICAgICAgIHVzZXJEYXRhTW9kZWwgPSBjb21wb25lbnQgInVzZXJEYXRhTW9kZWwiIHsKICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIlVzZXIgRGF0YSBNb2RlbCIKICAgICAgICAgICAgICAgICAgICB9IAoKICAgICAgICAgICAgICAgICAgICBzZXJ2aWNlRGF0YU1vZGVsID0gY29tcG9uZW50ICJzZXJ2aWNlRGF0YU1vZGVsIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJTZXJ2aWNlIERhdGEgTW9kZWwiCiAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICBjcmVkZW50aWFsRGF0YU1vZGVsID0gY29tcG9uZW50ICJjcmVkZW50aWFsRGF0YU1vZGVsIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJDcmVkZW50aWFsIERhdGEgTW9kZWwiCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgICAgIAogICAgICAgICMgcmVsYXRpb25zaGlwcyBiZXR3ZWVuIHBlb3BsZSBhbmQgc29mdHdhcmUgc3lzdGVtcwogICAgICAgIGV4dGVybmVsRGV2ZWxvcGVyIC0+IGlkZW50aXR5U29sdXRpb24gInVzZSBhdXRodGljYXRpb24gY2FwYWJpbGl0eSIKCiAgICAgICAgIyByZWxhdGlvbnNoaXBzIHRvL2Zyb20gY29udGFpbmVycwogICAgICAgIHBhc3NndWFyZFNlcnZlckFwcGxpY2F0aW9uIC0+IGRhdGFiYXNlCiAgICAgICAgM3JkUGFydHlBcHBsaWNhdGlvbiAtPiBsb2dpbldlYkFwcGxpY2F0aW9uCiAgICAgICAgbG9naW5XZWJBcHBsaWNhdGlvbiAtPiBwYXNzZ3VhcmRTZXJ2ZXJBcHBsaWNhdGlvbgogICAgICAgIGxvZ2luV2ViQXBwbGljYXRpb24gLT4gbG9naW5XZWJBcHBsaWNhdGlvbgoKCiAgICAgICAgIyByZWxhdGlvbnNoaXBzIHRvL2Zyb20gY29tcG9uZW50cwogICAgICAgIGxvZ2luU2VydmljZSAtPiBhdXRoZW50aWNhdGlvblNlcnZpY2UKICAgICAgICBhdXRoZW50aWNhdGlvblNlcnZpY2UgLT4gcmVwb3NpdG9yeQoKICAgICAgICBsb2dpbldlYkFwcGxpY2F0aW9uIC0+IGxvZ2luU2VydmljZQoKICAgICAgICByZXBvc2l0b3J5IC0+IGRhdGFiYXNlCgogICAgfQoKICAgIHZpZXdzIHsKICAgICAgICBwcm9wZXJ0aWVzIHsKICAgICAgICAgICAgICAgIHN0cnVjdHVyaXpyLmdyb3VwcyB0cnVlCiAgICAgICAgICAgICAgICAiYzRwbGFudHVtbC5lbGVtZW50UHJvcGVydGllcyIgInRydWUiCiAgICAgICAgICAgIH0KCiAgICAgICAgc3lzdGVtbGFuZHNjYXBlICJTeXN0ZW1MYW5kc2NhcGUiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGV4Y2x1ZGUgM3JkUGFydHlBcHBsaWNhdGlvbgogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgfQoKICAgICAgICBzeXN0ZW1jb250ZXh0IGlkZW50aXR5U29sdXRpb24gIlN5c3RlbUNvbnRleHQiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGV4Y2x1ZGUgZXh0ZXJuZWxEZXZlbG9wZXIKICAgICAgICAgICAgYW5pbWF0aW9uIHsKICAgICAgICAgICAgICAgIGlkZW50aXR5U29sdXRpb24KICAgICAgICAgICAgfQogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJUaGUgc3lzdGVtIGNvbnRleHQgZGlhZ3JhbSBmb3IgdGhlIEludGVybmV0IEJhbmtpbmcgU3lzdGVtLiIKICAgICAgICAgICAgcHJvcGVydGllcyB7CiAgICAgICAgICAgICAgICBzdHJ1Y3R1cml6ci5ncm91cHMgZmFsc2UKICAgICAgICAgICAgfQogICAgICAgIH0KCiAgICAgICAgY29udGFpbmVyIGlkZW50aXR5U29sdXRpb24gIkNvbnRhaW5lcnMiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICAgICAgZGVzY3JpcHRpb24gIlRoZSBjb250YWluZXIgZGlhZ3JhbSBmb3IgdGhlIEludGVybmV0IEJhbmtpbmcgU3lzdGVtLiIKICAgICAgICB9CgogICAgICAgIGNvbXBvbmVudCBwYXNzZ3VhcmRTZXJ2ZXJBcHBsaWNhdGlvbiAiU2VydmVyQ29tcG9uZW50VmVpdyIgewogICAgICAgICAgICBkZXNjcmlwdGlvbiAiIgogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgIH0KCgogICAgICAgIHN0eWxlcyB7CiAgICAgICAgICAgIGVsZW1lbnQgIlBlcnNvbiIgewogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICAgICAgZm9udFNpemUgMjIKICAgICAgICAgICAgICAgIHNoYXBlIFBlcnNvbgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkN1c3RvbWVyIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICMwODQyN2IKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJCYW5rIFN0YWZmIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM5OTk5OTkKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJTb2Z0d2FyZSBTeXN0ZW0iIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzExNjhiZAogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkV4aXN0aW5nIFN5c3RlbSIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjOTk5OTk5CiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiQ29udGFpbmVyIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM0MzhkZDUKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJXZWIgQnJvd3NlciIgewogICAgICAgICAgICAgICAgc2hhcGUgV2ViQnJvd3NlcgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIk1vYmlsZSBBcHAiIHsKICAgICAgICAgICAgICAgIHNoYXBlIE1vYmlsZURldmljZUxhbmRzY2FwZQogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBDeWxpbmRlcgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkNvbXBvbmVudCIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjODViYmYwCiAgICAgICAgICAgICAgICBjb2xvciAjMDAwMDAwCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiRmFpbG92ZXIiIHsKICAgICAgICAgICAgICAgIG9wYWNpdHkgMjUKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQo="
+    "structurizr.dsl" : "LyoKICogVGhpcyBpcyBhIGNvbWJpbmVkIHZlcnNpb24gb2YgdGhlIGZvbGxvd2luZyB3b3Jrc3BhY2VzLCB3aXRoIGF1dG9tYXRpYyBsYXlvdXQgZW5hYmxlZDoKICoKICogLSAiQmlnIEJhbmsgcGxjIC0gU3lzdGVtIExhbmRzY2FwZSIgKGh0dHBzOi8vc3RydWN0dXJpenIuY29tL3NoYXJlLzI4MjAxLykKICogLSAiQmlnIEJhbmsgcGxjIC0gSW50ZXJuZXQgQmFua2luZyBTeXN0ZW0iIChodHRwczovL3N0cnVjdHVyaXpyLmNvbS9zaGFyZS8zNjE0MS8pCiovCndvcmtzcGFjZSAiUGFzc0d1YXJkIiAgewogICAgZGVzY3JpcHRpb24gIlRoaXMgaXMgdG8gZGVzY3JpYmUgdGhlIHByb2plY3QgY2FsbGVkIHBhc3NndWFyZCwgd2hpY2ggaXMgdG8gcHJvdmlkZSBjb21tb24gdGVjaG5pY2FsIGNhcGFiaWxpdGllcyB0byB0aGUgZGV2ZWxvcGVyLiIgCiAgICAKICAgICFkb2NzIGRvY3MKCiAgICBtb2RlbCB7CiAgICAKICAgICAgICBncm91cCAiV2ViU2VydmljZSIgewogICAgICAgICAgICAgd2ViU2VydmljZURldmVsb3BlciA9IHBlcnNvbiAiV2ViU2VydmljZURldmVsb3BlciIgewogICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIuybuSDshJzruYTsiqQg6rCc67Cc7J6QIgogICAgICAgICAgICB9CiAgICAgICAgICAgIAogICAgICAgICAgICB3ZWJTZXJ2aWNlID0gc29mdHdhcmVzeXN0ZW0gIldlYiBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAi7J247KadIOyLnOyKpO2FnOydtCDtlYTsmpTtlZwg7Ju5IOyEnOu5hOyKpCIKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIAogICAgICAgIGdyb3VwICJVc2VycyIgewogICAgICAgICAgICB3ZWJTZXJ2aWNlVXNlciA9IHBlcnNvbiAiV2ViU2VydmljZVVzZXIiIHsKICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICLsm7kg7ISc67mE7Iqk7J2YIOyCrOyaqeyekCIKICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICAKICAgICAgICBncm91cCAiUGFzc0d1YXJkIiB7CiAgICAgICAgICAgIHBhc3NHdWFyZElkZW50aXR5ID0gc29mdHdhcmVzeXN0ZW0gIlBhc3NHdWFyZCBJZGVudGl0eSIgewogICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIlBhc3NHdWFyZCDsnbjspp0g7Iuc7Iqk7YWcIgogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBmcm9udGVuZCA9IGNvbnRhaW5lciAiUGFzc0d1YXJkIElkZW50aXR5IFdlYiIgewogICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJBdXRoZW50aWNhdG9yKENsaWVudCBEZXZpY2UpIgogICAgICAgICAgICAgICAgICAgIHRhZ3MgIldlYiBCcm93c2VyIgogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBncm91cCAiUGFzc0d1YXJkIEJhY2tlbmQiIHsKICAgICAgICAgICAgICAgICAgICBJZGVudGl0eU1vZHVsZSA9IGNvbnRhaW5lciAiSWRlbnRpdHkgTW9kdWxlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIElkZW50aXR5VXNlY2FzZSA9IGNvbXBvbmVudCAiSWRlbnRpdHkgVXNlciBVc2VjYXNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiUGFzc0d1YXJkIElkZW50aXR5IFNvbHV0aW9uIFVzZWNhc2UiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgQXV0aE1vZHVsZSA9IGNvbnRhaW5lciAiQXV0aCBNb2R1bGUiIHsKICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIkludGVybmFsIENyZWRlbnRpYWwgU3lzdGVtIgogICAgICAgICAgICAgICAgICAgICAgICBBdXRoU2VydmljZSA9IGNvbXBvbmVudCAiQXV0aCBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAi7L2U65OcIOuwnOq4ieq4sCwg7Yag7YGwIOuwnOq4ieq4sCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBDb2RlUmVwb3NpdG9yeSA9IGNvbXBvbmVudCAiQ29kZSBSZXNwb3NpdG9yeSIgewogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgIENsaWVudE1vZHVsZSA9IGNvbnRhaW5lciAiQ2xpZW50IE1vZHVsZSIgewogICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiUGFzc0d1YXJkIENsaWVudCBTeXN0ZW0sIGxpa2Ugd2ViIHNlcnZpY2UiCiAgICAgICAgICAgICAgICAgICAgICAgIENsaWVudFNlcnZpY2UgPSBjb21wb25lbnQgIkNsaWVudCBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiY2xpZW50IOygleuztCDsobDtmowg67CPIOqygOymnSDshJzruYTsiqQiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgQ2xpZW50UmVwb3NpdG9yeSA9IGNvbXBvbmVudCAiQ2xpZW50IFJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICBDcmVkZW50aWFsTW9kdWxlID0gY29udGFpbmVyICJDcmVkZW50aWFsIE1vZHVsZSIgewogICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiRXh0ZXJuYWwgQXV0aGVudGljYXRvciBDb25uZWN0b3IiCiAgICAgICAgICAgICAgICAgICAgICAgIE9hdXRoU2VydmljZSA9IGNvbXBvbmVudCAiT2F1dGggU2VydmljZSJ7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiT0F1dGgyLjAg7Jew64+ZIOyEnOu5hOyKpCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBPYXV0aFJlcG9zaXRvcnkgPSBjb21wb25lbnQgIk9hdXRoIFJlcG9zaXRvcnkiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uICJPQXV0aDIuMCDsnbjspp0g7KCV67O0IOyggOyepeyGjCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBQYXNzS2V5U2VydmljZSA9IGNvbXBvbmVudCAiUGFzc2tleSBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAiUGFzc2tleSDsl7Drj5kg7ISc67mE7IqkIgogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIFBhc3NrZXlSZXBvc2l0b3J5ID0gY29tcG9uZW50ICJQYXNza2V5IFJlcG9zaXRvcnkiewogICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIlBhc3NrZXkg7J247KadIOygleuztCDsoIDsnqXshowiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgU2Vzc2lvbk1vZHVsZSA9IGNvbnRhaW5lciAiU2Vzc2lvbiBNb2R1bGUiIHsKICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIuyduOymnSDshLjshZgg66qo65OIIgogICAgICAgICAgICAgICAgICAgICAgICBTZXNzaW9uU2VydmljZSA9IGNvbXBvbmVudCAiU2Vzc2lvbiBTZXJ2aWNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbiAi7IS47IWYIOyhsO2ajCDrsI8g67OA6rK9IOq4sOuKpSDsoJzqs7UiCiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgU2Vzc2lvblJlcG9zaXRvcnkgPSBjb21wb25lbnQgIlNlc3Npb24gUmVwb3NpdG9yeSIge30KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgVXNlck1vZHVsZSA9IGNvbnRhaW5lciAiVXNlciBNb2R1bGUiIHsKICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIlBhc3NHdWFyZCBVc2VyIFN5c3RlbSIKICAgICAgICAgICAgICAgICAgICAgICAgVXNlclNlcnZpY2UgPSBjb21wb25lbnQgIlVzZXIgU2VydmljZSIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb24gIuyCrOyaqeyekCDsoJXrs7Qg6riw67O4IOyEnOu5hOyKpCIKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICBVc2VyUmVwb3NpdG9yeSA9IGNvbXBvbmVudCAiVXNlciBSZXBvc2l0b3J5IiB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICBkYiA9IGNvbnRhaW5lciAiUGFzc0d1YXJkIERhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRlY2hub2xvZ3kgIkR5bmFtb0RCIgogICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICBDb2RlU3RvcmFnZSA9IGNvbXBvbmVudCAiQ29kZSBTdG9yYWdlIiB7fQogICAgICAgICAgICAgICAgICAgICAgICBVc2VyU3RvcmFnZSA9IGNvbXBvbmVudCAiVXNlciBTdG9yYWdlIiB7fQogICAgICAgICAgICAgICAgICAgICAgICBDbGllbnRTdG9yYWdlID0gY29tcG9uZW50ICJDbGllbnQgU3RvcmFnZSIge30KICAgICAgICAgICAgICAgICAgICAgICAgT2F1dGhTdG9yYWdlID0gY29tcG9uZW50ICJPYXV0aCBTdG9yYWdlIiB7fQogICAgICAgICAgICAgICAgICAgICAgICBQYXNza2V5U3RvcmFnZSA9IGNvbXBvbmVudCAiUGFzc2tleSBTdG9yYWdlIiB7fQogICAgICAgICAgICAgICAgICAgICAgICBTZXNzaW9uU3RvcmFnZSA9IGNvbXBvbmVudCAiU2Vzc2lvbiBTdG9yYWdlIiB7fQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICAjIHNvZnR3YXJlIGxldmVsIGRlcGVuZGVuY2llcwogICAgICAgIHdlYlNlcnZpY2VVc2VyIC0+IHBhc3NHdWFyZElkZW50aXR5CiAgICAgICAgd2ViU2VydmljZSAtPiBwYXNzR3VhcmRJZGVudGl0eQogICAgICAgIAogICAgICAgICMgY29udGFpbmVyIGxldmVsIGRlcGVuZGVuY2llcwogICAgICAgIGZyb250ZW5kIC0+IElkZW50aXR5TW9kdWxlCiAgICAgICAgCiAgICAgICAgIyBjb21wb25lbnQgbGV2ZWwgZGVwZW5kZW5jaWVzCiAgICAgICAgSWRlbnRpdHlVc2VjYXNlIC0+IEF1dGhTZXJ2aWNlCiAgICAgICAgSWRlbnRpdHlVc2VjYXNlIC0+IENsaWVudFNlcnZpY2UKICAgICAgICBJZGVudGl0eVVzZWNhc2UgLT4gVXNlclNlcnZpY2UKICAgICAgICBJZGVudGl0eVVzZWNhc2UgLT4gU2Vzc2lvblNlcnZpY2UKICAgICAgICBJZGVudGl0eVVzZWNhc2UgLT4gT2F1dGhTZXJ2aWNlCiAgICAgICAgSWRlbnRpdHlVc2VjYXNlIC0+IFBhc3NrZXlTZXJ2aWNlCiAgICAgICAgCiAgICAgICAgQXV0aFNlcnZpY2UgLT4gQ29kZVJlcG9zaXRvcnkKICAgICAgICBDb2RlUmVwb3NpdG9yeSAtPiBDb2RlU3RvcmFnZQogICAgICAgIAogICAgICAgIENsaWVudFNlcnZpY2UgLT4gQ2xpZW50UmVwb3NpdG9yeQogICAgICAgIENsaWVudFJlcG9zaXRvcnkgLT4gQ2xpZW50U3RvcmFnZQogICAgICAgIAogICAgICAgIFVzZXJTZXJ2aWNlIC0+IFVzZXJSZXBvc2l0b3J5CiAgICAgICAgVXNlclJlcG9zaXRvcnkgLT4gVXNlclN0b3JhZ2UKICAgICAgICAKICAgICAgICBPYXV0aFNlcnZpY2UgLT4gT2F1dGhSZXBvc2l0b3J5CiAgICAgICAgT2F1dGhSZXBvc2l0b3J5IC0+IE9hdXRoU3RvcmFnZQogICAgICAgIAogICAgICAgIFBhc3NrZXlTZXJ2aWNlIC0+IFBhc3NrZXlSZXBvc2l0b3J5CiAgICAgICAgUGFzc2tleVJlcG9zaXRvcnkgLT4gUGFzc2tleVN0b3JhZ2UKCiAgICAgICAgU2Vzc2lvblNlcnZpY2UgLT4gU2Vzc2lvblJlcG9zaXRvcnkKICAgICAgICBTZXNzaW9uUmVwb3NpdG9yeSAtPiBTZXNzaW9uU3RvcmFnZQogICAgfQogICAgICAgIAoKICAgIHZpZXdzIHsKICAgICAgICBwcm9wZXJ0aWVzIHsKICAgICAgICAgICAgICAgIHN0cnVjdHVyaXpyLmdyb3VwcyB0cnVlCiAgICAgICAgICAgICAgICAiYzRwbGFudHVtbC5lbGVtZW50UHJvcGVydGllcyIgInRydWUiCiAgICAgICAgICAgIH0KCiAgICAgICAgc3lzdGVtbGFuZHNjYXBlICJTeXN0ZW1MYW5kc2NhcGUiIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9MYXlvdXQKICAgICAgICB9CiAgICAgICAgCiAgICAgICAgY29udGFpbmVyIHBhc3NHdWFyZElkZW50aXR5ICJDb250YWluZXJWaWV3IiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0CiAgICAgICAgfQogICAgICAgIAogICAgICAgIGNvbXBvbmVudCBDcmVkZW50aWFsTW9kdWxlICJDb21wb25lbnRWaWV3IiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0CiAgICAgICAgfQoKCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiUGVyc29uIiB7CiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgICAgICBmb250U2l6ZSAyMgogICAgICAgICAgICAgICAgc2hhcGUgUGVyc29uCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiQ3VzdG9tZXIiIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzA4NDI3YgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkJhbmsgU3RhZmYiIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzk5OTk5OQogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIlNvZnR3YXJlIFN5c3RlbSIgewogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMTE2OGJkCiAgICAgICAgICAgICAgICBjb2xvciAjZmZmZmZmCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiRXhpc3RpbmcgU3lzdGVtIiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM5OTk5OTkKICAgICAgICAgICAgICAgIGNvbG9yICNmZmZmZmYKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJDb250YWluZXIiIHsKICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzQzOGRkNQogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIldlYiBCcm93c2VyIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBXZWJCcm93c2VyCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiTW9iaWxlIEFwcCIgewogICAgICAgICAgICAgICAgc2hhcGUgTW9iaWxlRGV2aWNlTGFuZHNjYXBlCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiRGF0YWJhc2UiIHsKICAgICAgICAgICAgICAgIHNoYXBlIEN5bGluZGVyCiAgICAgICAgICAgIH0KICAgICAgICAgICAgZWxlbWVudCAiQ29tcG9uZW50IiB7CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICM4NWJiZjAKICAgICAgICAgICAgICAgIGNvbG9yICMwMDAwMDAKICAgICAgICAgICAgfQogICAgICAgICAgICBlbGVtZW50ICJGYWlsb3ZlciIgewogICAgICAgICAgICAgICAgb3BhY2l0eSAyNQogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9Cg=="
   },
   "views" : {
     "componentViews" : [ {
@@ -293,45 +720,47 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
-      "containerId" : "5",
+      "containerId" : "14",
       "elements" : [ {
-        "id" : "4",
-        "x" : 0,
-        "y" : 0
-      }, {
         "id" : "6",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "7",
+        "id" : "15",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "8",
+        "id" : "16",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "9",
+        "id" : "17",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "10",
+        "id" : "18",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "25",
         "x" : 0,
         "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
-      "key" : "ServerComponentVeiw",
-      "order" : 4,
+      "key" : "ComponentView",
+      "order" : 3,
       "relationships" : [ {
-        "id" : "19"
+        "id" : "53"
       }, {
-        "id" : "20"
+        "id" : "56"
       }, {
-        "id" : "21"
+        "id" : "72"
       }, {
-        "id" : "22"
+        "id" : "74"
       }, {
-        "id" : "23"
+        "id" : "77"
+      }, {
+        "id" : "79"
       } ]
     } ],
     "configuration" : {
@@ -394,72 +823,66 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
-      "description" : "The container diagram for the Internet Banking System.",
       "elements" : [ {
-        "id" : "2",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "4",
-        "x" : 0,
-        "y" : 0
-      }, {
         "id" : "5",
         "x" : 0,
         "y" : 0
       }, {
-        "id" : "10",
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "14",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "19",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "22",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "25",
         "x" : 0,
         "y" : 0
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
-      "key" : "Containers",
-      "order" : 3,
-      "relationships" : [ {
-        "id" : "15"
-      }, {
-        "id" : "16"
-      }, {
-        "id" : "18"
-      }, {
-        "id" : "19"
-      } ],
-      "softwareSystemId" : "3"
-    } ],
-    "systemContextViews" : [ {
-      "animations" : [ {
-        "elements" : [ "3" ],
-        "order" : 1
-      } ],
-      "automaticLayout" : {
-        "applied" : false,
-        "edgeSeparation" : 0,
-        "implementation" : "Graphviz",
-        "nodeSeparation" : 300,
-        "rankDirection" : "TopBottom",
-        "rankSeparation" : 300,
-        "vertices" : false
-      },
-      "description" : "The system context diagram for the Internet Banking System.",
-      "elements" : [ {
-        "id" : "2",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "3",
-        "x" : 0,
-        "y" : 0
-      } ],
-      "enterpriseBoundaryVisible" : true,
-      "key" : "SystemContext",
+      "key" : "ContainerView",
       "order" : 2,
-      "properties" : {
-        "structurizr.groups" : "false"
-      },
       "relationships" : [ {
-        "id" : "17"
+        "id" : "34"
+      }, {
+        "id" : "38"
+      }, {
+        "id" : "42"
+      }, {
+        "id" : "46"
+      }, {
+        "id" : "50"
+      }, {
+        "id" : "54"
+      }, {
+        "id" : "61"
+      }, {
+        "id" : "66"
+      }, {
+        "id" : "71"
+      }, {
+        "id" : "76"
+      }, {
+        "id" : "85"
       } ],
-      "softwareSystemId" : "3"
+      "softwareSystemId" : "4"
     } ],
     "systemLandscapeViews" : [ {
       "automaticLayout" : {
@@ -476,7 +899,15 @@
         "x" : 0,
         "y" : 0
       }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
         "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
         "x" : 0,
         "y" : 0
       } ],
@@ -484,7 +915,9 @@
       "key" : "SystemLandscape",
       "order" : 1,
       "relationships" : [ {
-        "id" : "14"
+        "id" : "32"
+      }, {
+        "id" : "33"
       } ]
     } ]
   }

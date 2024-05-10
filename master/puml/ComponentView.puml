@@ -1,0 +1,30 @@
+@startuml
+set separator none
+title PassGuard Identity - Credential Module - Components
+
+top to bottom direction
+
+!include <C4/C4>
+!include <C4/C4_Context>
+!include <C4/C4_Container>
+!include <C4/C4_Component>
+
+Container(PassGuardIdentity.IdentityModule, "Identity Module", $techn="", $descr="", $tags="", $link="")
+Container(PassGuardIdentity.PassGuardDatabase, "PassGuard Database", $techn="DynamoDB", $descr="", $tags="", $link="")
+
+Container_Boundary("PassGuardIdentity.CredentialModule_boundary", "Credential Module", $tags="") {
+  Component(PassGuardIdentity.CredentialModule.OauthService, "Oauth Service", $techn="", $descr="OAuth2.0 연동 서비스", $tags="", $link="")
+  Component(PassGuardIdentity.CredentialModule.OauthRepository, "Oauth Repository", $techn="", $descr="OAuth2.0 인증 정보 저장소", $tags="", $link="")
+  Component(PassGuardIdentity.CredentialModule.PasskeyService, "Passkey Service", $techn="", $descr="Passkey 연동 서비스", $tags="", $link="")
+  Component(PassGuardIdentity.CredentialModule.PasskeyRepository, "Passkey Repository", $techn="", $descr="Passkey 인증 정보 저장소", $tags="", $link="")
+}
+
+Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.CredentialModule.OauthService, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.IdentityModule, PassGuardIdentity.CredentialModule.PasskeyService, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.CredentialModule.OauthService, PassGuardIdentity.CredentialModule.OauthRepository, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.CredentialModule.OauthRepository, PassGuardIdentity.PassGuardDatabase, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.CredentialModule.PasskeyService, PassGuardIdentity.CredentialModule.PasskeyRepository, "", $techn="", $tags="", $link="")
+Rel(PassGuardIdentity.CredentialModule.PasskeyRepository, PassGuardIdentity.PassGuardDatabase, "", $techn="", $tags="", $link="")
+
+SHOW_LEGEND(true)
+@enduml
