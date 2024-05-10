@@ -13,24 +13,22 @@ workspace "PassGuard"  {
     
         group "WebService" {
              webServiceDeveloper = person "WebServiceDeveloper" {
-                description "웹 서비스 개발자"
+                description "web service developer"
             }
             
             webService = softwaresystem "Web Service" {
-                description "인증 시스템이 필요한 웹 서비스"
+                description "web service requiring login system"
             }
         }
     
         group "Users" {
             webServiceUser = person "WebServiceUser" {
-                description "웹 서비스의 사용자"
+                description "web service user"
             }
         }
         
         group "PassGuard" {
             passGuardIdentity = softwaresystem "PassGuard Identity" {
-                description "PassGuard 인증 시스템"
-                
                 frontend = container "PassGuard Identity Web" {
                     description "Authenticator(Client Device)"
                     tags "Web Browser"
@@ -46,7 +44,7 @@ workspace "PassGuard"  {
                     AuthModule = container "Auth Module" {
                         description "Internal Credential System"
                         AuthService = component "Auth Service" {
-                            description "코드 발급기, 토큰 발급기"
+                            description "verification_code, token issuer"
                         }
                         CodeRepository = component "Code Respository" {
                         }
@@ -55,7 +53,7 @@ workspace "PassGuard"  {
                     ClientModule = container "Client Module" {
                         description "PassGuard Client System, like web service"
                         ClientService = component "Client Service" {
-                            description "client 정보 조회 및 검증 서비스"
+                            description "client management"
                         }
                         ClientRepository = component "Client Repository" {
                         }
@@ -64,23 +62,20 @@ workspace "PassGuard"  {
                     CredentialModule = container "Credential Module" {
                         description "External Authenticator Connector"
                         OauthService = component "Oauth Service"{
-                            description "OAuth2.0 연동 서비스"
+                            description "OAuth2.0 connector"
                         }
                         OauthRepository = component "Oauth Repository" {
-                            description "OAuth2.0 인증 정보 저장소"
                         }
                         PassKeyService = component "Passkey Service" {
-                            description "Passkey 연동 서비스"
+                            description "Passkey connector"
                         }
                         PasskeyRepository = component "Passkey Repository"{
-                            description "Passkey 인증 정보 저장소"
                         }
                     }
                     
                     SessionModule = container "Session Module" {
-                        description "인증 세션 모듈"
                         SessionService = component "Session Service" {
-                            description "세션 조회 및 변경 기능 제공"
+                            description "session management"
                         }
                         SessionRepository = component "Session Repository" {}
                     }
@@ -88,10 +83,9 @@ workspace "PassGuard"  {
                     UserModule = container "User Module" {
                         description "PassGuard User System"
                         UserService = component "User Service" {
-                            description "사용자 정보 기본 서비스"
+                            description "user management"
                         }
                         UserRepository = component "User Repository" {
-                            
                         }
                     }
                     
