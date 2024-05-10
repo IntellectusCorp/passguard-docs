@@ -40,7 +40,7 @@ jobs:
         shell: bash
 
       - name: Publish site
-        uses: JamesIves/github-pages-deploy-action@main
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build/site
           branch: gh-pages
