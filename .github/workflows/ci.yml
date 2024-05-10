@@ -36,7 +36,7 @@ jobs:
         run: >
           docker run --user root -t --rm -v ${{ github.workspace }}:/var/model
           ghcr.io/avisi-cloud/structurizr-site-generatr generate-site
-          --workspace-file workspace/passguard-c4.dsl --assets-dir workspace/docs/assets
+          --workspace-file workspace/passguard.dsl
         shell: bash
 
       - name: Publish site
