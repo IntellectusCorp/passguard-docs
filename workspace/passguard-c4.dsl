@@ -11,116 +11,137 @@ workspace "PassGuard"  {
 
     model {
     
-        group "Users" {
+        group "WebService" {
+             webServiceDeveloper = person "WebServiceDeveloper" {
+                description "웹 서비스 개발자"
+            }
             
-            externelDeveloper = person "Ext.Developer" {
-               description "A user of this system, usually who are going to implement some software system. "
+            webService = softwaresystem "Web Service" {
+                description "인증 시스템이 필요한 웹 서비스"
             }
         }
-        
-        group "3rd Party System" {
-        
-            3rdPartyApplication = softwaresystem "3rd-Party Application" {
-                description "A system to use PassGuard as a identity provider"
+    
+        group "Users" {
+            webServiceUser = person "WebServiceUser" {
+                description "웹 서비스의 사용자"
             }
         }
-        
         
         group "PassGuard" {
-
-            identitySolution = softwaresystem "Identity Solution" {
-                description "Identity Solution Provider."
+            passGuardIdentity = softwaresystem "PassGuard Identity" {
+                description "PassGuard 인증 시스템"
                 
-                loginWebApplication = container "Login Web Application" {
+                frontend = container "PassGuard Identity Web" {
                     description "Authenticator(Client Device)"
-                    technology "NextJS"
                     tags "Web Browser"
                 }
-
-                passguardServerApplication = container "PassGuard Server Application" {
-                    description "API server"
-                    technology "NestJS"
-
-                    group "Application Layer" {
-
-                        loginService = component "Login Service" {
-                            technology "NextJS Service"
-                            properties {
-                                "Layer" "Application"
-                            }
-                        }
-                    }
-
-                    group "Business Logic Layer"{
-                        
-                        authenticationService = component "Authentication Service" {
-                            description "Business Logic: Authentication Service"
-                            technology "NextJS Service"
-                            properties {
-                                "Layer" "Business Logic"
-                            }
-                        }
-
-                        authorizationService = component "Authorization Service" {
-                            description "Business Logic: Authorization Service"
-                            technology "NextJS Service"
-                            properties {
-                                "Layer" "Business Logic"
-                            }
-                        }
-                    }
-
-                    group "Infrastructure Layer"{
-                        
-                        repository = component "General Repository" {
-                            description "Business Logic: Authentication Service"
-                            technology "prisma"
-                            properties {
-                                "Layer" "Infrastructure"
-                            }
-                        }
-                    }
-                }
                 
-                database = container "Database" {
-                    description "Stores identification related data to athenticate"    
-                    technology "MySQL"
-                    tags "Database"
-
-                    userDataModel = component "userDataModel" {
-                        description "User Data Model"
-                    } 
-
-                    serviceDataModel = component "serviceDataModel" {
-                        description "Service Data Model"
+                group "PassGuard Backend" {
+                    IdentityModule = container "Identity Module" {
+                        IdentityUsecase = component "Identity User Usecase" {
+                            description "PassGuard Identity Solution Usecase"
+                        }
                     }
-
-                    credentialDataModel = component "credentialDataModel" {
-                        description "Credential Data Model"
+                    
+                    AuthModule = container "Auth Module" {
+                        description "Internal Credential System"
+                        AuthService = component "Auth Service" {
+                            description "코드 발급기, 토큰 발급기"
+                        }
+                        CodeRepository = component "Code Respository" {
+                        }
+                    }
+                    
+                    ClientModule = container "Client Module" {
+                        description "PassGuard Client System, like web service"
+                        ClientService = component "Client Service" {
+                            description "client 정보 조회 및 검증 서비스"
+                        }
+                        ClientRepository = component "Client Repository" {
+                        }
+                    }
+                    
+                    CredentialModule = container "Credential Module" {
+                        description "External Authenticator Connector"
+                        OauthService = component "Oauth Service"{
+                            description "OAuth2.0 연동 서비스"
+                        }
+                        OauthRepository = component "Oauth Repository" {
+                            description "OAuth2.0 인증 정보 저장소"
+                        }
+                        PassKeyService = component "Passkey Service" {
+                            description "Passkey 연동 서비스"
+                        }
+                        PasskeyRepository = component "Passkey Repository"{
+                            description "Passkey 인증 정보 저장소"
+                        }
+                    }
+                    
+                    SessionModule = container "Session Module" {
+                        description "인증 세션 모듈"
+                        SessionService = component "Session Service" {
+                            description "세션 조회 및 변경 기능 제공"
+                        }
+                        SessionRepository = component "Session Repository" {}
+                    }
+                    
+                    UserModule = container "User Module" {
+                        description "PassGuard User System"
+                        UserService = component "User Service" {
+                            description "사용자 정보 기본 서비스"
+                        }
+                        UserRepository = component "User Repository" {
+                            
+                        }
+                    }
+                    
+                    db = container "PassGuard Database" {
+                        technology "DynamoDB"
+                    
+                        CodeStorage = component "Code Storage" {}
+                        UserStorage = component "User Storage" {}
+                        ClientStorage = component "Client Storage" {}
+                        OauthStorage = component "Oauth Storage" {}
+                        PasskeyStorage = component "Passkey Storage" {}
+                        SessionStorage = component "Session Storage" {}
                     }
                 }
             }
         }
+        # software level dependencies
+        webServiceUser -> passGuardIdentity
+        webService -> passGuardIdentity
         
-        # relationships between people and software systems
-        externelDeveloper -> identitySolution "use authtication capability"
+        # container level dependencies
+        frontend -> IdentityModule
+        
+        # component level dependencies
+        IdentityUsecase -> AuthService
+        IdentityUsecase -> ClientService
+        IdentityUsecase -> UserService
+        IdentityUsecase -> SessionService
+        IdentityUsecase -> OauthService
+        IdentityUsecase -> PasskeyService
+        
+        AuthService -> CodeRepository
+        CodeRepository -> CodeStorage
+        
+        ClientService -> ClientRepository
+        ClientRepository -> ClientStorage
+        
+        UserService -> UserRepository
+        UserRepository -> UserStorage
+        
+        OauthService -> OauthRepository
+        OauthRepository -> OauthStorage
+        
+        PasskeyService -> PasskeyRepository
+        PasskeyRepository -> PasskeyStorage
 
-        # relationships to/from containers
-        passguardServerApplication -> database
-        3rdPartyApplication -> loginWebApplication
-        loginWebApplication -> passguardServerApplication
-        loginWebApplication -> loginWebApplication
-
-
-        # relationships to/from components
-        loginService -> authenticationService
-        authenticationService -> repository
-
-        loginWebApplication -> loginService
-
-        repository -> database
-
+        SessionService -> SessionRepository
+        SessionRepository -> SessionStorage
     }
+        
 
     views {
         properties {
@@ -130,33 +151,17 @@ workspace "PassGuard"  {
 
         systemlandscape "SystemLandscape" {
             include *
-            exclude 3rdPartyApplication
             autoLayout
         }
-
-        systemcontext identitySolution "SystemContext" {
+        
+        container passGuardIdentity "ContainerView" {
             include *
-            exclude externelDeveloper
-            animation {
-                identitySolution
-            }
-            autoLayout
-            description "The system context diagram for the Internet Banking System."
-            properties {
-                structurizr.groups false
-            }
+            autolayout
         }
-
-        container identitySolution "Containers" {
+        
+        component CredentialModule "ComponentView" {
             include *
-            autoLayout
-            description "The container diagram for the Internet Banking System."
-        }
-
-        component passguardServerApplication "ServerComponentVeiw" {
-            description ""
-            include *
-            autoLayout
+            autolayout
         }
 
 
