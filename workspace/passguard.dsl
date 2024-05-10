@@ -145,7 +145,7 @@ workspace "PassGuard"  {
 
         systemlandscape "SystemLandscape" {
             include *
-            autoLayout
+            autoLayout rl
         }
         
         container passGuardIdentity "ContainerView" {
